@@ -1,5 +1,6 @@
 {
 	"name": "@pubcore/logger",
+	"version": "1.0.0",
 	"description": "log to stdout with some basic info like loglevel, timestamp or filename",
 	"repository": {
 		"type": "git",
@@ -7,7 +8,7 @@
 	},
 	"author": "pubcore",
 	"scripts": {
-		"test": "nyc --reporter=text mocha --inspect --recursive",
+		"test": " mocha --inspect --recursive",
 		"coverage": "nyc report --reporter=text-lcov"
 	},
 	"main": "js/index.js",
