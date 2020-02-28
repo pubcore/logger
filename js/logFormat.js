@@ -17,6 +17,7 @@ module.exports = (message, object, level, depth, err, proc) => {
 
 	log += component ? component + ' ' : '- '
 	log += '[,,' + get(memory, 'rss', '') + '] '
+	log += '['+get(proc, 'pid', '')+',,' + get(memory, 'rss', '') + '] '
 	log += level + ' '
 	log += get(fileline, 1) ? '[' + fileline[1] + '] ' : '[] '
 
