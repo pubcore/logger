@@ -9,7 +9,8 @@ const {info} = require('@pubcore/logger')
 var x = {foo:'bar'}
 info('X=', x)
 //will produce this output to stdout:
-2020-01-24T20:25:05+0000 @myScope/package [,,41930752] INFO [] X={"foo":"bar"}
+2020-01-24T20:25:05+0000 @myScope/package [1536,,41930752] INFO [] X={"foo":"bar"}
+//     timestamp               scope      [pid.,,.memory.] level
 ```
 
 ## available log level
