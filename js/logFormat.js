@@ -16,14 +16,13 @@ module.exports = (message, object, level, depth, err, proc) => {
 	}
 
 	log += component ? component + ' ' : '- '
-	log += '[,,' + get(memory, 'rss', '') + '] '
 	log += '['+get(proc, 'pid', '')+',,' + get(memory, 'rss', '') + '] '
 	log += level + ' '
-	log += get(fileline, 1) ? '[' + fileline[1] + '] ' : '[] '
+	log += '[' + get(fileline, 1, '') + '] '
 
 	if (typeof message != 'string') {
 		try {
-			log += JSON.stringify(message)
+			log += JSON.stringify(get(message, 'stack', message))
 		} catch (err) {
 			log += message+' '+err
 		}
