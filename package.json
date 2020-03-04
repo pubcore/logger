@@ -1,6 +1,6 @@
 {
 	"name": "@pubcore/logger",
-	"version": "1.2.0",
+	"version": "1.2.1",
 	"description": "log to stdout with some basic info like loglevel, timestamp or filename",
 	"repository": {
 		"type": "git",
