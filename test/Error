@@ -1,0 +1,23 @@
+Error
+    at Object.info (/home/node/app/node_modules/@a/unittest/node_modules/@pubcore/logger/js/index.js:3:40)
+    at module.exports (/home/node/app/node_modules/@a/unittest/js/lib/do.js:24:6)
+    at module.exports (/home/node/app/node_modules/@a/unittest/js/action/beforedo.js:22:29)
+    at module.exports (/home/node/app/node_modules/@a/unittest/js/action/start.js:21:19)
+    at /home/node/app/node_modules/@pubcore/node-composition/js/lib/router.js:47:9
+    at Layer.handle [as handle_request] (/home/node/app/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/node/app/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/home/node/app/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/home/node/app/node_modules/express/lib/router/layer.js:95:5)
+    at /home/node/app/node_modules/express/lib/router/index.js:281:22
+    at Function.process_params (/home/node/app/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/node/app/node_modules/express/lib/router/index.js:275:10)
+    at next (/home/node/app/node_modules/express/lib/router/route.js:127:14)
+    at /home/node/app/node_modules/@pubcore/node-composition/js/lib/router.js:36:5
+    at Layer.handle [as handle_request] (/home/node/app/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/node/app/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/home/node/app/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/home/node/app/node_modules/express/lib/router/layer.js:95:5)
+    at /home/node/app/node_modules/express/lib/router/index.js:281:22
+    at Function.process_params (/home/node/app/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/node/app/node_modules/express/lib/router/index.js:275:10)
+    at next (/home/node/app/node_modules/express/lib/router/route.js:127:14)
