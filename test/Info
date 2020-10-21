@@ -1,0 +1,8 @@
+Error
+    at Object.info (/home/node/app/node_modules/@a/unittest/node_modules/@pubcore/logger/js/index.js:4:38)
+    at /home/node/app/node_modules/@a/unittest/js/lib/do.js:68:52
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async module.exports (/home/node/app/node_modules/@a/unittest/js/lib/do.js:68:12)
+    at async module.exports (/home/node/app/node_modules/@a/unittest/js/lib/doBefore.js:12:8)
+    at async module.exports (/home/node/app/node_modules/@a/unittest/js/action/doBeforeBefore.js:16:20)

@@ -22,7 +22,7 @@ module.exports = (message, object, level, err, proc, config) => {
 		}
 
 		for (var j = 2; j <= 3; j++) {
-			fileline = (get(stackline, j, '').match(/([^/]+:[0-9]+):[0-9]+\)$/) || [])[1]
+			fileline = (get(stackline, j, '').match(/([^/]+:[0-9]+):[0-9]+\)?$/) || [])[1]
 			if (fileline) {
 				break
 			}
@@ -32,7 +32,7 @@ module.exports = (message, object, level, err, proc, config) => {
 	log += component ? component + ' ' : '- '
 	log += '['+get(proc, 'pid', '')+',,' + get(memory, 'rss', '') + '] '
 	log += level + ' '
-	log += '[' + (fileline||'') + '] '
+	log += '[' + (fileline||'-:0') + '] '
 
 	if (typeof message != 'string') {
 		try {
