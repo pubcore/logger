@@ -8,25 +8,11 @@ module.exports = (message, object, level, err, proc, config) => {
 		component = get(config, 'component', '')
 
 	if (err && err.stack) {
-		var stackline = err.stack.substring(0, 1000).split(/\r\n|\n/)
-		if (! component) {
-			for (var i = stackline.length-1; i >= 0; i--) {
-				var matches1 = stackline[i].match(
-					RegExp(`module\\.exports \\(${proc.cwd()}/node_modules/([^/]+/[^/]+)`, 'i')
-				)
-				if (matches1 && matches1[1]) {
-					component = matches1[1]
-					break
-				}
-			}
-		}
-
-		for (var j = 2; j <= 3; j++) {
-			fileline = (get(stackline, j, '').match(/([^/]+:[0-9]+):[0-9]+\)?$/) || [])[1]
-			if (fileline) {
-				break
-			}
-		}
+		var stackline = get(err.stack.substring(0, 1000).split(/\r\n|\n/), 2, '')
+		!component && (
+			component = (stackline.match(RegExp(`${proc.cwd()}/node_modules/([^/]+/[^/]+)`, 'i'))||[])[1]
+		)
+		fileline = (stackline.match(/([^/]+:[0-9]+):[0-9]+\)?$/) || [])[1]
 	}
 
 	log += component ? component + ' ' : '- '
