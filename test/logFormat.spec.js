@@ -8,46 +8,55 @@ const fs = require('fs'),
 		pid: 2,
 		cwd: () => '/home/node/app'
 	},
-	Error = {
-		stack: fs.readFileSync('./test/Error', 'utf8')
+	Error1 = {
+		stack: fs.readFileSync('./test/Error1', 'utf8')
 	},
-	Info = {
-		stack: fs.readFileSync('./test/Info', 'utf8')
+	Error2 = {
+		stack: fs.readFileSync('./test/Error2', 'utf8')
+	},
+	Error3 = {
+		stack: fs.readFileSync('./test/Error3', 'utf8')
 	}
 
 describe('log format', () => {
 	it('gets formatted log string', () => {
-		var logFormatted = logFormat('test {test:\'test\'}', null, 'DEBUG', Error, proc)
+		var logFormatted = logFormat('test {test:\'test\'}', null, 'DEBUG', Error1, proc)
 		notEqual(logFormatted.match(
 			/^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\+0000 {2}@a\/unittest \[2,,[0-9]+\] DEBUG \[do.js:24\] test \{test:'test'\}\n$/
 		), null)
 	})
-	it('gets formatted log string from Info', () => {
-		var logFormatted = logFormat('test {test:\'test\'}', null, 'DEBUG', Info, proc)
+	it('gets formatted log string from Error2', () => {
+		var logFormatted = logFormat('test {test:\'test\'}', null, 'DEBUG', Error2, proc)
 		notEqual(logFormatted.match(
 			/^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\+0000 {2}@a\/unittest \[2,,[0-9]+\] DEBUG \[do.js:68\] test \{test:'test'\}\n$/
 		), null)
 	})
+	it('gets formatted log string from Eror3', () => {
+		var logFormatted = logFormat('test {test:\'test\'}', null, 'DEBUG', Error3, proc)
+		notEqual(logFormatted.match(
+			/^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\+0000 {2}@a\/unittest \[2,,[0-9]+\] DEBUG \[do.js:20\] test \{test:'test'\}\n$/
+		), null)
+	})
 	it('gets formatted log string - init component', () => {
-		var logFormatted = logFormat('test {test:\'test\'}', null, 'DEBUG', Error, proc, {component:'@init/component'})
+		var logFormatted = logFormat('test {test:\'test\'}', null, 'DEBUG', Error1, proc, {component:'@init/component'})
 		notEqual(logFormatted.match(
 			/^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\+0000 {2}@init\/component \[2,,[0-9]+\] DEBUG \[do.js:24\] test \{test:'test'\}\n$/
 		), null)
 	})
 	it('gets formatted log string with converted object to string message', () => {
-		var logFormatted = logFormat({message:'message'}, {object:'object'}, 'DEBUG',  Error, proc)
+		var logFormatted = logFormat({message:'message'}, {object:'object'}, 'DEBUG',  Error1, proc)
 		notEqual(logFormatted.match(
 			/^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\+0000 {2}@a\/unittest \[2,,[0-9]+\] DEBUG \[do.js:24\] \{"message":"message"\}\{"object":"object"\}\n$/
 		), null)
 	})
 	it('gets formatted log string with converted string object to string message', () => {
-		var logFormatted = logFormat({message:'message'}, '{"object":"object"}', 'DEBUG',  Error, proc)
+		var logFormatted = logFormat({message:'message'}, '{"object":"object"}', 'DEBUG',  Error1, proc)
 		notEqual(logFormatted.match(
 			/^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\+0000 {2}@a\/unittest \[2,,[0-9]+\] DEBUG \[do.js:24\] \{"message":"message"\}"{\\"object\\":\\"object\\"\}"\n$/
 		), null)
 	})
 	it('gets formatted log string with converted stack trace, if message is an exception', () => {
-		var logFormatted = logFormat(new TypeError(), undefined, 'DEBUG',  Error, proc)
+		var logFormatted = logFormat(new TypeError(), undefined, 'DEBUG',  Error1, proc)
 		notEqual(logFormatted.match(/TypeError.+at Context/g), null)
 	})
 	it('gets formatted log string without Error', () => {
